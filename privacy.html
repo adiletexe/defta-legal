@@ -10,65 +10,76 @@
   h2 { font-size: 18px; margin-top: 28px; }
   p, li { font-size: 15px; }
   .meta { color: #888; font-size: 13px; }
+  .note { background: #FFF6EE; border-left: 4px solid #FF5C28; padding: 12px 16px; border-radius: 8px; }
 </style>
 </head>
 <body>
 <h1>Defta Privacy Policy</h1>
-<p class="meta">Effective date: May 24, 2026 · Last updated: May 24, 2026</p>
+<p class="meta">Effective date: June 5, 2026 · Last updated: June 5, 2026</p>
 
-<p>Defta ("we", "us", "the app") is designed with privacy as a default. This Privacy Policy explains what data Defta handles, how it is used, and your rights. By using Defta, you agree to this policy.</p>
+<p>Defta ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Defta, you agree to this policy.</p>
 
-<h2>1. Data we collect on our servers</h2>
-<p><strong>None.</strong> Defta does not operate a backend server. We do not collect, transmit, or store any personal data, account information, contact details, or device identifiers on servers operated by us. There are no analytics SDKs, advertising SDKs, marketing trackers, or crash-reporting services in the app.</p>
+<div class="note">
+  <strong>Plain-English summary.</strong> We do not run our own user database. Almost everything Defta does runs on your iPhone. Two specific features send a small amount of data to an AI provider so they can work: (1) your <em>text transcript</em> of a speaking drill — never the audio — is sent to generate written coaching feedback, and (2) a <em>photo</em> you take to verify a custom activity is sent so the AI can confirm what's in it. Your microphone audio and workout video never leave your phone.
+</div>
 
-<h2>2. Data that stays on your device</h2>
-<p>The following information is created and stored only on your iPhone and is never transmitted to us:</p>
+<h2>1. Data that stays on your device</h2>
+<p>The following is created and stored only on your iPhone and is never transmitted to us or to a third party:</p>
 <ul>
-  <li>App-block selections and Screen Time configuration, managed by Apple's Family Controls / Managed Settings framework.</li>
-  <li>Your quest progress, exercise counts, scroll budget, and streaks.</li>
-  <li>Camera and microphone input used for on-device exercise counting (push-ups, squats, speaking practice). Video and audio frames are processed locally by Apple's Vision and Speech frameworks and are never recorded, uploaded, or persisted.</li>
+  <li>Your app-block selections and Screen Time configuration, managed by Apple's Family Controls / Managed Settings frameworks. Per Apple's design, your usage statistics are not accessible to us.</li>
+  <li>Your quest progress, exercise counts, earned-minute budget, streaks, and history.</li>
+  <li><strong>Microphone audio.</strong> When you record a speaking drill, the audio is transcribed locally on your device by Apple's Speech framework. The audio file is held in a temporary location only long enough to transcribe and (optionally) let you play it back, and is removed when you leave the screen. Audio is never uploaded.</li>
+  <li><strong>Workout video.</strong> Camera frames used for rep counting are processed locally by Apple's Vision framework. No frames are recorded, persisted, or uploaded.</li>
 </ul>
 
-<h2>3. Subscriptions and third parties</h2>
+<h2>2. Data sent to our AI provider (OpenAI, via a Cloudflare proxy)</h2>
+<p>Two features need an AI model to work and therefore send a limited amount of data off-device. All requests go through a Cloudflare Worker we operate, which only adds authentication and forwards the request to OpenAI. The Cloudflare Worker does not log or store the contents of your requests.</p>
+<ul>
+  <li><strong>Speaking-drill coaching feedback.</strong> After your speech is transcribed on your device, the resulting <em>text transcript</em> (plus measured stats like words-per-minute and filler-word counts) is sent to OpenAI to generate written coaching feedback. The raw audio is never sent.</li>
+  <li><strong>"Other" activity verification.</strong> When you take a photo to verify a custom activity (for example, "I went for a run"), that single photo is downscaled and sent to OpenAI's vision model so the AI can confirm what it shows. The photo is sent for that one analysis only.</li>
+</ul>
+<p>We do not send any user account identifier, email, payment information, contacts, or location with these requests — only the transcript or photo and a description of the activity. OpenAI processes the request and returns a result. OpenAI's API terms govern how they handle the data they receive on our behalf; see <a href="https://openai.com/policies/privacy-policy/">OpenAI's privacy policy</a> and their <a href="https://openai.com/policies/api-data-usage-policies/">API data usage policies</a>.</p>
+<p>If you don't want to use these features, simply don't record a speaking drill or scan a custom activity — every other part of the app runs entirely on-device.</p>
+
+<h2>3. Subscriptions</h2>
 <p>Subscription purchases are processed by Apple via In-App Purchase. We use <strong>RevenueCat</strong> (RevenueCat, Inc., USA) to verify and manage subscription status. Apple shares an anonymous user identifier and purchase event metadata with RevenueCat — we do not receive your name, email address, Apple ID, or payment information.</p>
 <p>RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a><br>
 Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
 
-<h2>4. Permissions the app requests</h2>
+<h2>4. Analytics, advertising, tracking</h2>
+<p><strong>None.</strong> Defta contains no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services. We do not track you across apps or websites and we do not have an advertising identifier (IDFA) request.</p>
+
+<h2>5. Permissions the app requests</h2>
 <ul>
-  <li><strong>Screen Time / Family Controls</strong> — to block selected apps when your scroll budget is empty.</li>
-  <li><strong>Camera</strong> — to count exercise repetitions locally on-device.</li>
-  <li><strong>Microphone</strong> — to support speaking-practice exercises locally on-device.</li>
+  <li><strong>Screen Time / Family Controls</strong> — to block apps you select when your earned-minute budget runs out. You authorize Defta with "individual" authorization (self-control), not as a parental controller.</li>
+  <li><strong>Camera</strong> — to count workout reps on-device, and to take a verification photo when you scan a custom activity. Verification photos are sent to our AI provider as described above; workout video never leaves your phone.</li>
+  <li><strong>Microphone</strong> — to record short speaking drills. Audio stays on your phone.</li>
+  <li><strong>Speech recognition</strong> — so Apple's on-device speech recognizer can transcribe your speaking drills locally.</li>
   <li><strong>Notifications</strong> — to remind you about quests and budget status.</li>
 </ul>
-<p>All processing happens on your device. You can revoke any permission at any time in iOS Settings.</p>
+<p>You can revoke any permission at any time in iOS Settings.</p>
 
-<h2>5. Children's privacy</h2>
-<p>Defta is not directed to children under 13. We do not knowingly collect personal information from anyone, and certainly not from children under 13. If you believe a child has somehow provided information, contact us and we will assist — though there is no data on our servers to delete.</p>
+<h2>6. Children's privacy</h2>
+<p>Defta is not directed to children under 13. We do not knowingly collect personal information from anyone, and certainly not from children under 13. If you believe a child has somehow provided information, contact us.</p>
 
-<h2>6. Your rights under GDPR (European users)</h2>
-<p>If you are in the European Economic Area, UK, or Switzerland, you have the following rights under the General Data Protection Regulation:</p>
-<ul>
-  <li>Right of access, rectification, erasure, restriction, portability, and objection.</li>
-  <li>Right to withdraw consent at any time.</li>
-  <li>Right to lodge a complaint with your local data protection authority.</li>
-</ul>
-<p>Because Defta does not collect personal data on its servers, there is no data for us to provide, correct, or delete. Uninstalling the app removes all on-device data.</p>
+<h2>7. Your rights under GDPR (European users)</h2>
+<p>If you are in the European Economic Area, UK, or Switzerland, you have the rights of access, rectification, erasure, restriction, portability, and objection, the right to withdraw consent, and the right to lodge a complaint with your local data protection authority.</p>
+<p>Because we do not maintain a user database, almost all personal data lives on your device — uninstalling the app removes it. For transcripts and photos sent to OpenAI for the AI features, the lawful basis is the performance of your request; deletion of those records is governed by OpenAI's policies linked above.</p>
 
-<h2>7. Your rights under CCPA/CPRA (California users)</h2>
-<p>If you are a California resident, you have the right to know what personal information is collected, to request deletion, to opt out of the sale or sharing of personal information, and to non-discrimination for exercising your rights.</p>
-<p><strong>We do not collect, sell, or share any personal information.</strong> No personal information has been collected or sold in the preceding 12 months.</p>
+<h2>8. Your rights under CCPA/CPRA (California users)</h2>
+<p>You have the right to know what personal information is collected, to request deletion, to opt out of the sale or sharing of personal information, and to non-discrimination for exercising your rights.</p>
+<p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong> No personal information has been sold in the preceding 12 months.</p>
 
-<h2>8. Data retention</h2>
-<p>Because we do not store any personal data on our servers, there is nothing for us to retain. On-device data exists only as long as the app is installed and is removed when you delete the app.</p>
+<h2>9. Data retention</h2>
+<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store request contents.</p>
 
-<h2>9. International transfers</h2>
-<p>No personal data leaves your device. Apple and RevenueCat may process subscription metadata in the United States and other countries — see their respective privacy policies for details.</p>
+<h2>10. International transfers</h2>
+<p>Apple, RevenueCat, Cloudflare, and OpenAI may process data in the United States and other countries. See their respective privacy policies for details.</p>
 
-<h2>10. Changes to this policy</h2>
+<h2>11. Changes to this policy</h2>
 <p>We may update this policy. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance.</p>
 
-<h2>11. Contact</h2>
+<h2>12. Contact</h2>
 <p>For any privacy questions or to exercise your rights, contact:<br>
 <a href="mailto:ausarbekovadilet@gmail.com">ausarbekovadilet@gmail.com</a></p>
 </body>
