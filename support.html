@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defta — Support</title>
+<style>
+  :root {
+    --accent: #FF5C28;
+    --accent-soft: #FFF6EE;
+    --ink: #1A1A1A;
+    --muted: #6B6B6B;
+    --line: #EDEDED;
+    --bg: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    color: var(--ink);
+    line-height: 1.6;
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  header { margin-bottom: 32px; }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .brand .logo {
+    width: 42px; height: 42px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #FF7A45, var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 22px;
+    box-shadow: 0 8px 24px rgba(255, 92, 40, 0.25);
+  }
+  .brand .name { font-size: 18px; font-weight: 700; }
+  .brand .name span { color: var(--muted); font-weight: 500; }
+
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); font-size: 16px; margin: 0 0 28px; }
+  h2 { font-size: 20px; margin-top: 44px; margin-bottom: 14px; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; margin-top: 22px; margin-bottom: 6px; }
+  p, li { font-size: 15.5px; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .hero-card {
+    background: var(--accent-soft);
+    border: 1px solid #FFE0CB;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 28px 0 8px;
+  }
+  .hero-card p { margin: 0; }
+  .hero-card .lead { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .hero-card .sub { color: var(--muted); font-size: 14.5px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 20px 0;
+  }
+  @media (max-width: 540px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .contact-tile {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: border-color .15s, transform .15s;
+  }
+  .contact-tile:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+  .contact-tile .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .contact-tile .value { font-size: 16px; font-weight: 600; }
+
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  .faq-item:last-of-type { border-bottom: 1px solid var(--line); }
+  .faq-q { font-weight: 600; font-size: 16px; margin-bottom: 8px; }
+  .faq-a { color: #333; }
+  .faq-a p:first-child { margin-top: 0; }
+  .faq-a p:last-child { margin-bottom: 0; }
+  .faq-a ol, .faq-a ul { margin: 10px 0; }
+
+  code, .kbd {
+    font-family: ui-monospace, "SF Mono", monospace;
+    background: #F4F4F4;
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 13.5px;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13.5px;
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+  }
+  footer .legal-links a { color: var(--muted); margin-right: 14px; }
+  footer .legal-links a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">D</div>
+    <div class="name">Defta <span>· Support</span></div>
+  </div>
+  <h1>How can we help?</h1>
+  <p class="tagline">Real human replies, usually within a few hours. Always within one business day.</p>
+</header>
+
+<div class="hero-card">
+  <p class="lead">The fastest way to reach us is email.</p>
+  <p class="sub">Built solo. Every message lands directly in my inbox — Adilet.</p>
+</div>
+
+<div class="contact-grid">
+  <a class="contact-tile" href="mailto:ausarbekovadilet@gmail.com?subject=Defta%20Support">
+    <div class="label">Email</div>
+    <div class="value">ausarbekovadilet@gmail.com</div>
+  </a>
+  <a class="contact-tile" href="mailto:ausarbekovadilet@gmail.com?subject=Defta%20—%20Bug%20Report&body=What%20happened%3A%0A%0AWhat%20I%20expected%3A%0A%0AiPhone%20model%20%2B%20iOS%20version%3A%0A%0ADefta%20version%3A%201.0">
+    <div class="label">Report a bug</div>
+    <div class="value">Send a bug report →</div>
+  </a>
+</div>
+
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item">
+  <div class="faq-q">How do I cancel my Defta Pro subscription?</div>
+  <div class="faq-a">
+    <p>Subscriptions are managed by Apple, not by Defta — so the cancel button lives in iOS Settings, not inside the app. Here's the path:</p>
+    <ol>
+      <li>Open the iOS <strong>Settings</strong> app.</li>
+      <li>Tap your <strong>name</strong> at the very top.</li>
+      <li>Tap <strong>Subscriptions</strong>.</li>
+      <li>Tap <strong>Defta</strong>, then <strong>Cancel Subscription</strong>.</li>
+    </ol>
+    <p>You'll keep Pro access until the end of your current billing period — no rush. If your free trial is still active, you can cancel anytime before it ends and you won't be charged.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">I subscribed but Defta isn't showing as Pro. What now?</div>
+  <div class="faq-a">
+    <p>This is almost always a one-tap fix:</p>
+    <ol>
+      <li>Open Defta.</li>
+      <li>On the paywall screen (or in Profile → Manage subscription), tap <strong>Restore Purchases</strong>.</li>
+      <li>Wait a second — Pro should activate immediately.</li>
+    </ol>
+    <p>If that doesn't work, force-quit the app and reopen it. If it still doesn't, email us with your iCloud email and we'll fix it manually.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">How do I switch Defta to a new iPhone?</div>
+  <div class="faq-a">
+    <p>Defta stores your progress on-device, so a new phone starts fresh — but your subscription follows your Apple ID:</p>
+    <ol>
+      <li>Install Defta on the new phone from the App Store.</li>
+      <li>Sign in with the same Apple ID you used to subscribe.</li>
+      <li>Open the app, hit <strong>Restore Purchases</strong>.</li>
+    </ol>
+    <p>Quest progress, streaks, and earned minutes stay on the old device. If you want them ported across, email us — we'll help you copy the state file across.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">I unlocked apps but Defta still blocks them.</div>
+  <div class="faq-a">
+    <p>Defta uses Apple's Screen Time framework to enforce blocks. Two things to check:</p>
+    <ol>
+      <li>Open <strong>Settings → Screen Time</strong> and make sure <strong>Family Controls</strong> shows Defta as authorized.</li>
+      <li>Inside Defta, open the <strong>Today</strong> tab and confirm your earned minutes counter is greater than zero. Blocking lifts only while you have minutes banked.</li>
+    </ol>
+    <p>If the block still doesn't lift after both check out, force-quit and reopen Defta — iOS sometimes needs a kick to refresh Screen Time policies.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">The camera says it can't see my pushup / squat / activity.</div>
+  <div class="faq-a">
+    <p>The camera uses on-device pose detection for workouts and AI verification for other activities. Common fixes:</p>
+    <ul>
+      <li><strong>For workouts:</strong> Place your phone 4–6 feet away on a stable surface, in landscape if doing pushups, in portrait for squats. Make sure your full body is in frame.</li>
+      <li><strong>For activity verification (Side Quests, Other):</strong> Hold the photo steady, ensure good light, and make sure the activity is clearly visible inside the bracket frame.</li>
+      <li><strong>Permission issue:</strong> Settings → Defta → Camera → make sure it's enabled.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">Does Defta work offline?</div>
+  <div class="faq-a">
+    <p>Mostly yes. The blocker, the workout pose detection, the language lessons, the books, the speaking drills, and the quest list all run on-device with no internet needed.</p>
+    <p>Two things <em>do</em> need a connection:</p>
+    <ul>
+      <li><strong>AI verification</strong> — the camera shot for Side Quests or "Other" activities is sent to our AI verifier and needs internet at the moment you press the shutter.</li>
+      <li><strong>Speaking feedback</strong> — your transcribed text (not the audio) is sent for written coaching feedback.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">How do I get a refund?</div>
+  <div class="faq-a">
+    <p>Apple handles all refunds for App Store purchases, including Defta Pro. Go to <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, sign in with your Apple ID, find the Defta charge, and request a refund. Apple usually responds within 48 hours.</p>
+    <p>If Apple denies your refund and you have a genuine issue — the app didn't work, you were double-charged, or anything else that feels unfair — email us and we'll do what we can to make it right.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">My data — what does Defta send anywhere?</div>
+  <div class="faq-a">
+    <p>Short version: almost nothing. Everything except two specific AI features runs entirely on your phone.</p>
+    <p>The full breakdown is in our <a href="privacy.html">Privacy Policy</a>, but the highlights:</p>
+    <ul>
+      <li>No accounts, no signup, no email collected.</li>
+      <li>No analytics, no ad SDKs, no crash trackers.</li>
+      <li>Speaking drills: only the <em>text transcript</em> goes to OpenAI for feedback. The audio never leaves your phone.</li>
+      <li>Camera verification: a single downscaled photo goes to OpenAI for the verdict, then is forgotten.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">Can I use Defta to block someone else's phone (e.g., my kid's)?</div>
+  <div class="faq-a">
+    <p>No — Defta is built for individual self-control, not parental monitoring. It uses Apple's "Individual" Family Controls authorization, which means it can only block apps on the device it's installed on.</p>
+    <p>For parental controls, use Apple's built-in <strong>Screen Time</strong> in iOS Settings.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">Defta is crashing or behaving strangely. What should I try?</div>
+  <div class="faq-a">
+    <ol>
+      <li><strong>Force-quit</strong> the app (swipe up from the bottom, swipe Defta off the top) and reopen.</li>
+      <li><strong>Restart your iPhone</strong> — fixes 80% of Screen Time-framework hiccups.</li>
+      <li><strong>Update iOS</strong> to the latest version. Defta requires iOS 17 or later.</li>
+      <li>If it still happens, <a href="mailto:ausarbekovadilet@gmail.com?subject=Defta%20—%20Crash%20Report&body=What%20happened%3A%0A%0AWhat%20I%20expected%3A%0A%0AiPhone%20model%20%2B%20iOS%20version%3A%0A%0ADefta%20version%3A%201.0">email us</a> — include your iPhone model, iOS version, and what you were doing when it crashed.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">I have a feature idea. Where do I send it?</div>
+  <div class="faq-a">
+    <p>Right here: <a href="mailto:ausarbekovadilet@gmail.com?subject=Defta%20—%20Feature%20Idea">ausarbekovadilet@gmail.com</a>. I read everything and reply. Some of the best features in Defta started as a one-line email from a user.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">What devices does Defta support?</div>
+  <div class="faq-a">
+    <p>iPhone running iOS 17 or later. iPad and Mac support is on the roadmap but not yet available.</p>
+  </div>
+</div>
+
+<h2>Reporting a bug</h2>
+<p>The more context you give, the faster we can fix it. When you email a bug, please include:</p>
+<ul>
+  <li>What you tried to do</li>
+  <li>What happened instead</li>
+  <li>Your iPhone model and iOS version (Settings → General → About)</li>
+  <li>Defta version (Profile tab → bottom of the screen)</li>
+  <li>Screenshot or screen recording if you can</li>
+</ul>
+<p><a href="mailto:ausarbekovadilet@gmail.com?subject=Defta%20—%20Bug%20Report&body=What%20happened%3A%0A%0AWhat%20I%20expected%3A%0A%0AiPhone%20model%20%2B%20iOS%20version%3A%0A%0ADefta%20version%3A%201.0%0A%0AAdditional%20notes%3A">Send a bug report →</a></p>
+
+<h2>About Defta</h2>
+<p>Defta is built solo by Adilet Aussarbekov, with the goal of making the phone something you charge from, not the other way around. It blocks the apps you choose, then lets you earn the minutes back through workouts, languages, books, speaking drills, and real-world quests.</p>
+<p>If something feels off or broken, the email above goes straight to me — no support ticket queue, no chatbot. Thanks for using Defta.</p>
+
+<footer>
+  <div>© 2026 Adilet Aussarbekov</div>
+  <div class="legal-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+  </div>
+</footer>
+
+</body>
+</html>
