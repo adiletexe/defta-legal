@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Defta Privacy Policy</h1>
-<p class="meta">Effective date: June 5, 2026 · Last updated: June 5, 2026</p>
+<p class="meta">Effective date: June 5, 2026 · Last updated: June 12, 2026</p>
 
 <p>Defta ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Defta, you agree to this policy.</p>
 
@@ -32,7 +32,42 @@
   <li><strong>Workout video.</strong> Camera frames used for rep counting are processed locally by Apple's Vision framework. No frames are recorded, persisted, or uploaded.</li>
 </ul>
 
-<h2>2. Data sent to our AI provider (OpenAI, via a Cloudflare proxy)</h2>
+<h2>2. Face landmark data (on-device pose detection)</h2>
+<div class="note">
+  <strong>Plain-English summary.</strong> The workout coach uses Apple's Vision framework to estimate where your body's joints are in the camera frame so it can count push-ups, squats, and seconds of plank. The Vision API returns coordinates for a number of body landmarks; some of those landmarks describe the position of facial features (nose tip, eye centers, and ear positions). We use only the joint geometry to determine pose; we do not perform face recognition, identification, age, gender, emotion, or biometric matching. The numbers stay on your phone and are discarded the instant the next frame replaces them.
+</div>
+
+<h3>What "face data" the app touches</h3>
+<p>When the workout camera is active, the app invokes <code>VNDetectHumanBodyPoseRequest</code> (Apple's on-device human body pose API). For each video frame, the system returns the screen-space coordinates and confidence values for up to nineteen body landmarks. Five of those nineteen landmarks describe the position of the user's face: <em>nose</em>, <em>left eye</em>, <em>right eye</em>, <em>left ear</em>, <em>right ear</em>. The remaining fourteen describe shoulders, elbows, wrists, hips, knees, and ankles.</p>
+<p>No face image, face mesh, face descriptor, faceprint, depth map, or biometric template is created or stored. The app does not use Apple's <code>VNDetectFaceLandmarksRequest</code>, <code>VNDetectFaceRectanglesRequest</code>, or any face-recognition / face-identification API.</p>
+
+<h3>Why the app uses these coordinates</h3>
+<p>Solely for workout pose estimation:</p>
+<ul>
+  <li>Counting completed repetitions of pushups, squats, sit-ups, and similar exercises by tracking joint movement frame-to-frame.</li>
+  <li>Measuring the duration of static holds (e.g., plank) by confirming the user remains within an acceptable pose.</li>
+  <li>Showing the on-screen pose skeleton overlay so the user can see whether their body is in the camera frame.</li>
+</ul>
+<p>The face landmarks are part of the pose skeleton — they help anchor the head's position in space relative to the shoulders. They are not used for identification or any face-specific feature.</p>
+
+<h3>Where the data goes</h3>
+<p><strong>Nowhere off your device.</strong> Pose detection runs entirely on-device using Apple's Vision framework. Coordinates are read from each video frame into in-memory variables, used to update the workout counter, and overwritten when the next frame arrives. We do not:</p>
+<ul>
+  <li>Send pose coordinates, face landmark coordinates, or any other Vision output to our servers, to OpenAI, to RevenueCat, or to any other third party.</li>
+  <li>Save pose or face landmark coordinates to disk, the photo library, the keychain, iCloud, CloudKit, or any other persistent store.</li>
+  <li>Use the pose data for analytics, profiling, advertising, fraud detection, or any purpose other than counting exercise reps in the current workout session.</li>
+</ul>
+
+<h3>How long it is retained</h3>
+<p><strong>Zero seconds beyond active use.</strong> Each frame's coordinates exist in RAM only until the next frame's coordinates replace them — typically a fraction of a second. When you close the workout screen, all pose data is released. We never write face landmark coordinates to storage. There is no retention period to disclose because there is no retention.</p>
+
+<h3>Third-party sharing</h3>
+<p><strong>None.</strong> No third party — including Apple, OpenAI, RevenueCat, Cloudflare, or any other vendor — receives face landmark coordinates from the app. The Vision framework that produces the coordinates is Apple's on-device API; the coordinates are returned to the app process and never leave it.</p>
+
+<h3>Your choice</h3>
+<p>If you do not want the camera analyzing your body for pose detection, do not start a camera-based workout (Workout tab → Start). Every other feature of the app — quests, language lessons, speaking drills, books, screen-time blocking — runs without the workout camera.</p>
+
+<h2>3. Data sent to our AI provider (OpenAI, via a Cloudflare proxy)</h2>
 <p>Two features need an AI model to work and therefore send a limited amount of data off-device. All requests go through a Cloudflare Worker we operate, which only adds authentication and forwards the request to OpenAI. The Cloudflare Worker does not log or store the contents of your requests.</p>
 <ul>
   <li><strong>Speaking-drill coaching feedback.</strong> After your speech is transcribed on your device, the resulting <em>text transcript</em> (plus measured stats like words-per-minute and filler-word counts) is sent to OpenAI to generate written coaching feedback. The raw audio is never sent.</li>
@@ -41,15 +76,15 @@
 <p>We do not send any user account identifier, email, payment information, contacts, or location with these requests — only the transcript or photo and a description of the activity. OpenAI processes the request and returns a result. OpenAI's API terms govern how they handle the data they receive on our behalf; see <a href="https://openai.com/policies/privacy-policy/">OpenAI's privacy policy</a> and their <a href="https://openai.com/policies/api-data-usage-policies/">API data usage policies</a>.</p>
 <p>If you don't want to use these features, simply don't record a speaking drill or scan a custom activity — every other part of the app runs entirely on-device.</p>
 
-<h2>3. Subscriptions</h2>
+<h2>4. Subscriptions</h2>
 <p>Subscription purchases are processed by Apple via In-App Purchase. We use <strong>RevenueCat</strong> (RevenueCat, Inc., USA) to verify and manage subscription status. Apple shares an anonymous user identifier and purchase event metadata with RevenueCat — we do not receive your name, email address, Apple ID, or payment information.</p>
 <p>RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a><br>
 Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
 
-<h2>4. Analytics, advertising, tracking</h2>
+<h2>5. Analytics, advertising, tracking</h2>
 <p><strong>None.</strong> Defta contains no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services. We do not track you across apps or websites and we do not have an advertising identifier (IDFA) request.</p>
 
-<h2>5. Permissions the app requests</h2>
+<h2>6. Permissions the app requests</h2>
 <ul>
   <li><strong>Screen Time / Family Controls</strong> — to block apps you select when your earned-minute budget runs out. You authorize Defta with "individual" authorization (self-control), not as a parental controller.</li>
   <li><strong>Camera</strong> — to count workout reps on-device, and to take a verification photo when you scan a custom activity. Verification photos are sent to our AI provider as described above; workout video never leaves your phone.</li>
@@ -59,27 +94,27 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 </ul>
 <p>You can revoke any permission at any time in iOS Settings.</p>
 
-<h2>6. Children's privacy</h2>
+<h2>7. Children's privacy</h2>
 <p>Defta is not directed to children under 13. We do not knowingly collect personal information from anyone, and certainly not from children under 13. If you believe a child has somehow provided information, contact us.</p>
 
-<h2>7. Your rights under GDPR (European users)</h2>
+<h2>8. Your rights under GDPR (European users)</h2>
 <p>If you are in the European Economic Area, UK, or Switzerland, you have the rights of access, rectification, erasure, restriction, portability, and objection, the right to withdraw consent, and the right to lodge a complaint with your local data protection authority.</p>
 <p>Because we do not maintain a user database, almost all personal data lives on your device — uninstalling the app removes it. For transcripts and photos sent to OpenAI for the AI features, the lawful basis is the performance of your request; deletion of those records is governed by OpenAI's policies linked above.</p>
 
-<h2>8. Your rights under CCPA/CPRA (California users)</h2>
+<h2>9. Your rights under CCPA/CPRA (California users)</h2>
 <p>You have the right to know what personal information is collected, to request deletion, to opt out of the sale or sharing of personal information, and to non-discrimination for exercising your rights.</p>
 <p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong> No personal information has been sold in the preceding 12 months.</p>
 
-<h2>9. Data retention</h2>
+<h2>10. Data retention</h2>
 <p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store request contents.</p>
 
-<h2>10. International transfers</h2>
+<h2>11. International transfers</h2>
 <p>Apple, RevenueCat, Cloudflare, and OpenAI may process data in the United States and other countries. See their respective privacy policies for details.</p>
 
-<h2>11. Changes to this policy</h2>
+<h2>12. Changes to this policy</h2>
 <p>We may update this policy. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance.</p>
 
-<h2>12. Contact</h2>
+<h2>13. Contact</h2>
 <p>For any privacy questions or to exercise your rights, contact:<br>
 <a href="mailto:ausarbekovadilet@gmail.com">ausarbekovadilet@gmail.com</a></p>
 </body>
