@@ -88,16 +88,18 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 <h3>What we send</h3>
 <ul>
   <li>The name of each onboarding step you reach (for example "name", "paywall", "done") and how long, in milliseconds, you spent on it.</li>
+  <li>The categorical answer you tap on a multiple-choice onboarding screen (for example "3–5 hours" on the phone-usage question, or which goal categories you picked). Only labels from the fixed option list are sent.</li>
   <li>Whether you granted the Screen&nbsp;Time / Family&nbsp;Controls and Notifications permission prompts (true / false only).</li>
   <li>Coarse-bucketed counts. For example, how many apps you chose to block is sent as a range like "2–5" or "6–10" rather than the exact number.</li>
   <li>Whether a paywall purchase started, succeeded, was canceled, or failed (with the failure reason category).</li>
+  <li>An onboarding attempt counter (1, 2, 3, …) so we can distinguish a fresh first-time run from a replay on the same install.</li>
   <li>A randomly-generated install identifier (a UUID), stored only inside the app's sandbox, used to count unique installs. This is <strong>not</strong> your IDFA, <strong>not</strong> your IDFV, <strong>not</strong> your Apple Account ID, and <strong>not</strong> linkable to any identifier outside this app. Deleting the app removes it.</li>
-  <li>Your app version and the platform identifier "ios".</li>
+  <li>Your app version, the platform identifier "ios", and whether the build is running in the iOS Simulator (so our own development runs can be excluded from the data).</li>
 </ul>
 
 <h3>What we never send</h3>
 <ul>
-  <li>Your name, email, phone number, or any free-text you typed.</li>
+  <li>Your name, email, phone number, or <strong>any text you typed yourself</strong>. The name field on the onboarding "what's your name" screen is stored locally on your device only and is never transmitted.</li>
   <li>Your photos, your workout videos, your speaking recordings, or your transcripts.</li>
   <li>The specific apps you chose to block (only the bucketed count).</li>
   <li>Your IDFA, IDFV, advertising ID, location, contacts, or any device fingerprint.</li>
