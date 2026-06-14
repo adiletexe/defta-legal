@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Defta Privacy Policy</h1>
-<p class="meta">Effective date: June 5, 2026 · Last updated: June 12, 2026</p>
+<p class="meta">Effective date: June 5, 2026 · Last updated: June 15, 2026</p>
 
 <p>Defta ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Defta, you agree to this policy.</p>
 
@@ -81,8 +81,32 @@
 <p>RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a><br>
 Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
 
-<h2>5. Analytics, advertising, tracking</h2>
-<p><strong>None.</strong> Defta contains no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services. We do not track you across apps or websites and we do not have an advertising identifier (IDFA) request.</p>
+<h2>5. Product analytics (first-party, privacy-respecting)</h2>
+<p>Defta contains <strong>no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services</strong>. We do not track you across apps or websites and we do not request the advertising identifier (IDFA).</p>
+<p>We do, however, run our own minimal product analytics to understand which steps of the onboarding flow are confusing or slow, so we can fix them. This data flows only to a Cloudflare Worker we operate, lands in <a href="https://developers.cloudflare.com/analytics/analytics-engine/">Cloudflare Workers Analytics Engine</a>, and is never shared with anyone else.</p>
+
+<h3>What we send</h3>
+<ul>
+  <li>The name of each onboarding step you reach (for example "name", "paywall", "done") and how long, in milliseconds, you spent on it.</li>
+  <li>Whether you granted the Screen&nbsp;Time / Family&nbsp;Controls and Notifications permission prompts (true / false only).</li>
+  <li>Coarse-bucketed counts. For example, how many apps you chose to block is sent as a range like "2–5" or "6–10" rather than the exact number.</li>
+  <li>Whether a paywall purchase started, succeeded, was canceled, or failed (with the failure reason category).</li>
+  <li>A randomly-generated install identifier (a UUID), stored only inside the app's sandbox, used to count unique installs. This is <strong>not</strong> your IDFA, <strong>not</strong> your IDFV, <strong>not</strong> your Apple Account ID, and <strong>not</strong> linkable to any identifier outside this app. Deleting the app removes it.</li>
+  <li>Your app version and the platform identifier "ios".</li>
+</ul>
+
+<h3>What we never send</h3>
+<ul>
+  <li>Your name, email, phone number, or any free-text you typed.</li>
+  <li>Your photos, your workout videos, your speaking recordings, or your transcripts.</li>
+  <li>The specific apps you chose to block (only the bucketed count).</li>
+  <li>Your IDFA, IDFV, advertising ID, location, contacts, or any device fingerprint.</li>
+  <li>Any other personally identifying information.</li>
+</ul>
+
+<h3>Where it goes and how long it lives</h3>
+<p>The data lands in our Cloudflare account in Cloudflare Workers Analytics Engine. Cloudflare's standard data retention for Analytics Engine is 90 days; we do not retain copies elsewhere. Cloudflare acts as our data processor and is bound by Cloudflare's data processing terms (<a href="https://www.cloudflare.com/cloudflare-customer-dpa/">Customer DPA</a>). Cloudflare's privacy policy: <a href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</a>.</p>
+<p>Because no third party (other than Cloudflare as our infrastructure provider) ever sees this data, and because we do not link it to any identifier outside this app, Defta does not present an App Tracking Transparency prompt — there is no tracking, as Apple defines the term, to consent to.</p>
 
 <h2>6. Permissions the app requests</h2>
 <ul>
@@ -106,7 +130,7 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 <p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong> No personal information has been sold in the preceding 12 months.</p>
 
 <h2>10. Data retention</h2>
-<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store request contents.</p>
+<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store the contents of OpenAI requests. Product analytics events written to Cloudflare Workers Analytics Engine (see Section 5) are retained for a maximum of 90 days, after which they expire automatically.</p>
 
 <h2>11. International transfers</h2>
 <p>Apple, RevenueCat, Cloudflare, and OpenAI may process data in the United States and other countries. See their respective privacy policies for details.</p>
