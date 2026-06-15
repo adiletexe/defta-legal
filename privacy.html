@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Defta Privacy Policy</h1>
-<p class="meta">Effective date: June 5, 2026 · Last updated: June 15, 2026</p>
+<p class="meta">Effective date: June 5, 2026 · Last updated: June 16, 2026</p>
 
 <p>Defta ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Defta, you agree to this policy.</p>
 
@@ -83,7 +83,7 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 
 <h2>5. Product analytics (first-party, privacy-respecting)</h2>
 <p>Defta contains <strong>no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services</strong>. We do not track you across apps or websites and we do not request the advertising identifier (IDFA).</p>
-<p>We do, however, run our own minimal product analytics to understand which steps of the onboarding flow are confusing or slow, so we can fix them. This data flows only to a Cloudflare Worker we operate, lands in <a href="https://developers.cloudflare.com/analytics/analytics-engine/">Cloudflare Workers Analytics Engine</a>, and is never shared with anyone else.</p>
+<p>We do, however, run our own minimal product analytics to understand which steps of the onboarding flow are confusing or slow, so we can fix them. This data flows only to a Cloudflare Worker we operate, lands in a <a href="https://developers.cloudflare.com/d1/">Cloudflare D1</a> database (a SQLite database hosted on Cloudflare's edge) under our account, and is never shared with anyone else.</p>
 
 <h3>What we send</h3>
 <ul>
@@ -107,8 +107,10 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 </ul>
 
 <h3>Where it goes and how long it lives</h3>
-<p>The data lands in our Cloudflare account in Cloudflare Workers Analytics Engine. Cloudflare's standard data retention for Analytics Engine is 90 days; we do not retain copies elsewhere. Cloudflare acts as our data processor and is bound by Cloudflare's data processing terms (<a href="https://www.cloudflare.com/cloudflare-customer-dpa/">Customer DPA</a>). Cloudflare's privacy policy: <a href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</a>.</p>
+<p>The data lands in a Cloudflare D1 database in our Cloudflare account. We retain product-analytics events for up to <strong>12 months</strong> from the date of the event, after which they are deleted. We do not retain copies anywhere else. Cloudflare acts as our data processor and is bound by Cloudflare's data processing terms (<a href="https://www.cloudflare.com/cloudflare-customer-dpa/">Customer DPA</a>). Cloudflare's privacy policy: <a href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</a>.</p>
 <p>Because no third party (other than Cloudflare as our infrastructure provider) ever sees this data, and because we do not link it to any identifier outside this app, Defta does not present an App Tracking Transparency prompt — there is no tracking, as Apple defines the term, to consent to.</p>
+<h3>Your choice</h3>
+<p>You can request deletion of all product-analytics events associated with your install at any time by emailing the address in Section&nbsp;13 with the request. Because the install identifier is randomly generated on first launch and is not linkable to your real identity, we will ask you to provide the identifier (visible inside the app at Profile&nbsp;→&nbsp;About) so we can find and erase the matching rows.</p>
 
 <h2>6. Permissions the app requests</h2>
 <ul>
@@ -132,7 +134,7 @@ Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://w
 <p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong> No personal information has been sold in the preceding 12 months.</p>
 
 <h2>10. Data retention</h2>
-<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store the contents of OpenAI requests. Product analytics events written to Cloudflare Workers Analytics Engine (see Section 5) are retained for a maximum of 90 days, after which they expire automatically.</p>
+<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store the contents of OpenAI requests. Product analytics events written to the Cloudflare D1 database (see Section 5) are retained for up to 12 months, after which they are deleted.</p>
 
 <h2>11. International transfers</h2>
 <p>Apple, RevenueCat, Cloudflare, and OpenAI may process data in the United States and other countries. See their respective privacy policies for details.</p>
