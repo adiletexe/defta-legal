@@ -3,144 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Defta — Privacy Policy</title>
+<title>Speakfirst — Privacy Policy</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #121112; line-height: 1.6; background: #F4F0EA; }
   h1 { font-size: 28px; }
   h2 { font-size: 18px; margin-top: 28px; }
   p, li { font-size: 15px; }
-  .meta { color: #888; font-size: 13px; }
-  .note { background: #FFF6EE; border-left: 4px solid #FF5C28; padding: 12px 16px; border-radius: 8px; }
+  .meta { color: #908A91; font-size: 13px; }
+  .note { background: #EEE7FF; border-left: 4px solid #6B45E8; padding: 12px 16px; border-radius: 8px; }
+  a { color: #6B45E8; }
 </style>
 </head>
 <body>
-<h1>Defta Privacy Policy</h1>
-<p class="meta">Effective date: June 5, 2026 · Last updated: June 16, 2026</p>
+<h1>Speakfirst Privacy Policy</h1>
+<p class="meta">Effective date: June 5, 2026 · Last updated: June 28, 2026</p>
 
-<p>Defta ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Defta, you agree to this policy.</p>
+<p>Speakfirst ("we", "us", "the app") is designed to be privacy-respecting by default. This Privacy Policy explains exactly what data the app handles, where it goes, and your rights. By using Speakfirst, you agree to this policy.</p>
 
 <div class="note">
-  <strong>Plain-English summary.</strong> We do not run our own user database. Almost everything Defta does runs on your iPhone. Two specific features send a small amount of data to an AI provider so they can work: (1) your <em>text transcript</em> of a speaking drill — never the audio — is sent to generate written coaching feedback, and (2) a <em>photo</em> you take to verify a custom activity is sent so the AI can confirm what's in it. Your microphone audio and workout video never leave your phone.
+  <strong>Plain-English summary.</strong> We do not run our own user database. Almost everything Speakfirst does runs on your iPhone. Two specific features send a small amount of data to an AI provider so they can work: (1) your <em>text transcript</em> of a speaking drill — never the audio — is sent to generate written coaching feedback, and (2) a <em>photo</em> you take to verify a custom activity is sent so the AI can confirm what's in it. Your microphone audio and workout video never leave your phone.
 </div>
 
 <h2>1. Data that stays on your device</h2>
 <p>The following is created and stored only on your iPhone and is never transmitted to us or to a third party:</p>
 <ul>
   <li>Your app-block selections and Screen Time configuration, managed by Apple's Family Controls / Managed Settings frameworks. Per Apple's design, your usage statistics are not accessible to us.</li>
-  <li>Your quest progress, exercise counts, earned-minute budget, streaks, and history.</li>
+  <li>Your speaking practice history, earned-minute wallet, emergency fund balance, streaks, XP, and level progress.</li>
   <li><strong>Microphone audio.</strong> When you record a speaking drill, the audio is transcribed locally on your device by Apple's Speech framework. The audio file is held in a temporary location only long enough to transcribe and (optionally) let you play it back, and is removed when you leave the screen. Audio is never uploaded.</li>
   <li><strong>Workout video.</strong> Camera frames used for rep counting are processed locally by Apple's Vision framework. No frames are recorded, persisted, or uploaded.</li>
 </ul>
 
 <h2>2. Face landmark data (on-device pose detection)</h2>
 <div class="note">
-  <strong>Plain-English summary.</strong> The workout coach uses Apple's Vision framework to estimate where your body's joints are in the camera frame so it can count push-ups, squats, and seconds of plank. The Vision API returns coordinates for a number of body landmarks; some of those landmarks describe the position of facial features (nose tip, eye centers, and ear positions). We use only the joint geometry to determine pose; we do not perform face recognition, identification, age, gender, emotion, or biometric matching. The numbers stay on your phone and are discarded the instant the next frame replaces them.
+  <strong>Plain-English summary.</strong> The workout coach uses Apple's Vision framework to estimate where your body's joints are in the camera frame so it can count push-ups, squats, and seconds of plank. Some returned landmarks describe facial feature positions. We use only joint geometry to determine pose; we do not perform face recognition, identification, or biometric matching. The numbers stay on your phone and are discarded when the next frame replaces them.
 </div>
-
-<h3>What "face data" the app touches</h3>
-<p>When the workout camera is active, the app invokes <code>VNDetectHumanBodyPoseRequest</code> (Apple's on-device human body pose API). For each video frame, the system returns the screen-space coordinates and confidence values for up to nineteen body landmarks. Five of those nineteen landmarks describe the position of the user's face: <em>nose</em>, <em>left eye</em>, <em>right eye</em>, <em>left ear</em>, <em>right ear</em>. The remaining fourteen describe shoulders, elbows, wrists, hips, knees, and ankles.</p>
-<p>No face image, face mesh, face descriptor, faceprint, depth map, or biometric template is created or stored. The app does not use Apple's <code>VNDetectFaceLandmarksRequest</code>, <code>VNDetectFaceRectanglesRequest</code>, or any face-recognition / face-identification API.</p>
-
-<h3>Why the app uses these coordinates</h3>
-<p>Solely for workout pose estimation:</p>
-<ul>
-  <li>Counting completed repetitions of pushups, squats, sit-ups, and similar exercises by tracking joint movement frame-to-frame.</li>
-  <li>Measuring the duration of static holds (e.g., plank) by confirming the user remains within an acceptable pose.</li>
-  <li>Showing the on-screen pose skeleton overlay so the user can see whether their body is in the camera frame.</li>
-</ul>
-<p>The face landmarks are part of the pose skeleton — they help anchor the head's position in space relative to the shoulders. They are not used for identification or any face-specific feature.</p>
-
-<h3>Where the data goes</h3>
-<p><strong>Nowhere off your device.</strong> Pose detection runs entirely on-device using Apple's Vision framework. Coordinates are read from each video frame into in-memory variables, used to update the workout counter, and overwritten when the next frame arrives. We do not:</p>
-<ul>
-  <li>Send pose coordinates, face landmark coordinates, or any other Vision output to our servers, to OpenAI, to RevenueCat, or to any other third party.</li>
-  <li>Save pose or face landmark coordinates to disk, the photo library, the keychain, iCloud, CloudKit, or any other persistent store.</li>
-  <li>Use the pose data for analytics, profiling, advertising, fraud detection, or any purpose other than counting exercise reps in the current workout session.</li>
-</ul>
-
-<h3>How long it is retained</h3>
-<p><strong>Zero seconds beyond active use.</strong> Each frame's coordinates exist in RAM only until the next frame's coordinates replace them — typically a fraction of a second. When you close the workout screen, all pose data is released. We never write face landmark coordinates to storage. There is no retention period to disclose because there is no retention.</p>
-
-<h3>Third-party sharing</h3>
-<p><strong>None.</strong> No third party — including Apple, OpenAI, RevenueCat, Cloudflare, or any other vendor — receives face landmark coordinates from the app. The Vision framework that produces the coordinates is Apple's on-device API; the coordinates are returned to the app process and never leave it.</p>
-
-<h3>Your choice</h3>
-<p>If you do not want the camera analyzing your body for pose detection, do not start a camera-based workout (Workout tab → Start). Every other feature of the app — quests, language lessons, speaking drills, books, screen-time blocking — runs without the workout camera.</p>
+<p>When the workout camera is active, the app invokes <code>VNDetectHumanBodyPoseRequest</code>. Coordinates are read from each video frame into in-memory variables, used to update the workout counter, and overwritten when the next frame arrives. We do not send pose or face landmark coordinates to our servers, OpenAI, RevenueCat, or any other third party, and we do not save them to disk.</p>
 
 <h2>3. Data sent to our AI provider (OpenAI, via a Cloudflare proxy)</h2>
-<p>Two features need an AI model to work and therefore send a limited amount of data off-device. All requests go through a Cloudflare Worker we operate, which only adds authentication and forwards the request to OpenAI. The Cloudflare Worker does not log or store the contents of your requests.</p>
+<p>Speaking-coaching feedback and optional activity-photo verification send limited data off-device through a Cloudflare Worker we operate. The worker only adds authentication and forwards the request to OpenAI. It does not log or store the contents of your requests.</p>
 <ul>
   <li><strong>Speaking-drill coaching feedback.</strong> After your speech is transcribed on your device, the resulting <em>text transcript</em> (plus measured stats like words-per-minute and filler-word counts) is sent to OpenAI to generate written coaching feedback. The raw audio is never sent.</li>
-  <li><strong>"Other" activity verification.</strong> When you take a photo to verify a custom activity (for example, "I went for a run"), that single photo is downscaled and sent to OpenAI's vision model so the AI can confirm what it shows. The photo is sent for that one analysis only.</li>
+  <li><strong>"Other" activity verification.</strong> When you take a photo to verify a custom activity, that single photo is downscaled and sent to OpenAI's vision model so the AI can confirm what it shows. The photo is sent for that one analysis only.</li>
 </ul>
-<p>We do not send any user account identifier, email, payment information, contacts, or location with these requests — only the transcript or photo and a description of the activity. OpenAI processes the request and returns a result. OpenAI's API terms govern how they handle the data they receive on our behalf; see <a href="https://openai.com/policies/privacy-policy/">OpenAI's privacy policy</a> and their <a href="https://openai.com/policies/api-data-usage-policies/">API data usage policies</a>.</p>
-<p>If you don't want to use these features, simply don't record a speaking drill or scan a custom activity — every other part of the app runs entirely on-device.</p>
+<p>We do not send any user account identifier, email, payment information, contacts, or location with these requests. OpenAI's privacy policy and API data usage policies govern how they handle the data they receive on our behalf.</p>
 
 <h2>4. Subscriptions</h2>
-<p>Subscription purchases are processed by Apple via In-App Purchase. We use <strong>RevenueCat</strong> (RevenueCat, Inc., USA) to verify and manage subscription status. Apple shares an anonymous user identifier and purchase event metadata with RevenueCat — we do not receive your name, email address, Apple ID, or payment information.</p>
-<p>RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a><br>
-Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
+<p>Subscription purchases are processed by Apple via In-App Purchase. We use <strong>RevenueCat</strong> to verify and manage subscription status. Apple shares an anonymous user identifier and purchase event metadata with RevenueCat — we do not receive your name, email address, Apple ID, or payment information.</p>
 
 <h2>5. Product analytics (first-party, privacy-respecting)</h2>
-<p>Defta contains <strong>no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services</strong>. We do not track you across apps or websites and we do not request the advertising identifier (IDFA).</p>
-<p>We do, however, run our own minimal product analytics to understand which steps of the onboarding flow are confusing or slow, so we can fix them. This data flows only to a Cloudflare Worker we operate, lands in a <a href="https://developers.cloudflare.com/d1/">Cloudflare D1</a> database (a SQLite database hosted on Cloudflare's edge) under our account, and is never shared with anyone else.</p>
-
-<h3>What we send</h3>
-<ul>
-  <li>The name of each onboarding step you reach (for example "name", "paywall", "done") and how long, in milliseconds, you spent on it.</li>
-  <li>The categorical answer you tap on a multiple-choice onboarding screen (for example "3–5 hours" on the phone-usage question, or which goal categories you picked). Only labels from the fixed option list are sent.</li>
-  <li>Whether you granted the Screen&nbsp;Time / Family&nbsp;Controls and Notifications permission prompts (true / false only).</li>
-  <li>Coarse-bucketed counts. For example, how many apps you chose to block is sent as a range like "2–5" or "6–10" rather than the exact number.</li>
-  <li>Whether a paywall purchase started, succeeded, was canceled, or failed (with the failure reason category).</li>
-  <li>An onboarding attempt counter (1, 2, 3, …) so we can distinguish a fresh first-time run from a replay on the same install.</li>
-  <li>A randomly-generated install identifier (a UUID), stored only inside the app's sandbox, used to count unique installs. This is <strong>not</strong> your IDFA, <strong>not</strong> your IDFV, <strong>not</strong> your Apple Account ID, and <strong>not</strong> linkable to any identifier outside this app. Deleting the app removes it.</li>
-  <li>Your app version, the platform identifier "ios", and whether the build is running in the iOS Simulator (so our own development runs can be excluded from the data).</li>
-</ul>
-
-<h3>What we never send</h3>
-<ul>
-  <li>Your name, email, phone number, or <strong>any text you typed yourself</strong>. The name field on the onboarding "what's your name" screen is stored locally on your device only and is never transmitted.</li>
-  <li>Your photos, your workout videos, your speaking recordings, or your transcripts.</li>
-  <li>The specific apps you chose to block (only the bucketed count).</li>
-  <li>Your IDFA, IDFV, advertising ID, location, contacts, or any device fingerprint.</li>
-  <li>Any other personally identifying information.</li>
-</ul>
-
-<h3>Where it goes and how long it lives</h3>
-<p>The data lands in a Cloudflare D1 database in our Cloudflare account. We retain product-analytics events for up to <strong>12 months</strong> from the date of the event, after which they are deleted. We do not retain copies anywhere else. Cloudflare acts as our data processor and is bound by Cloudflare's data processing terms (<a href="https://www.cloudflare.com/cloudflare-customer-dpa/">Customer DPA</a>). Cloudflare's privacy policy: <a href="https://www.cloudflare.com/privacypolicy/">https://www.cloudflare.com/privacypolicy/</a>.</p>
-<p>Because no third party (other than Cloudflare as our infrastructure provider) ever sees this data, and because we do not link it to any identifier outside this app, Defta does not present an App Tracking Transparency prompt — there is no tracking, as Apple defines the term, to consent to.</p>
-<h3>Your choice</h3>
-<p>You can request deletion of all product-analytics events associated with your install at any time by emailing the address in Section&nbsp;13 with the request. Because the install identifier is randomly generated on first launch and is not linkable to your real identity, we will ask you to provide the identifier (visible inside the app at Profile&nbsp;→&nbsp;About) so we can find and erase the matching rows.</p>
+<p>Speakfirst contains <strong>no third-party analytics SDKs, no advertising SDKs, no marketing trackers, and no crash-reporting services</strong>. We do not track you across apps or websites and we do not request the advertising identifier (IDFA).</p>
+<p>We run minimal first-party product analytics to understand which onboarding steps are confusing or slow. This data flows only to a Cloudflare Worker we operate, lands in a Cloudflare D1 database under our account, and is never shared with anyone else.</p>
 
 <h2>6. Permissions the app requests</h2>
 <ul>
-  <li><strong>Screen Time / Family Controls</strong> — to block apps you select when your earned-minute budget runs out. You authorize Defta with "individual" authorization (self-control), not as a parental controller.</li>
-  <li><strong>Camera</strong> — to count workout reps on-device, and to take a verification photo when you scan a custom activity. Verification photos are sent to our AI provider as described above; workout video never leaves your phone.</li>
+  <li><strong>Screen Time / Family Controls</strong> — to block apps you select when your earned-minute budget runs out.</li>
+  <li><strong>Camera</strong> — for Talk to Camera drills, on-device workout rep counting, and optional activity verification photos.</li>
   <li><strong>Microphone</strong> — to record short speaking drills. Audio stays on your phone.</li>
   <li><strong>Speech recognition</strong> — so Apple's on-device speech recognizer can transcribe your speaking drills locally.</li>
-  <li><strong>Notifications</strong> — to remind you about quests and budget status.</li>
+  <li><strong>Notifications</strong> — to remind you about practice and budget status.</li>
 </ul>
 <p>You can revoke any permission at any time in iOS Settings.</p>
 
 <h2>7. Children's privacy</h2>
-<p>Defta is not directed to children under 13. We do not knowingly collect personal information from anyone, and certainly not from children under 13. If you believe a child has somehow provided information, contact us.</p>
+<p>Speakfirst is not directed to children under 13. We do not knowingly collect personal information from children under 13.</p>
 
-<h2>8. Your rights under GDPR (European users)</h2>
-<p>If you are in the European Economic Area, UK, or Switzerland, you have the rights of access, rectification, erasure, restriction, portability, and objection, the right to withdraw consent, and the right to lodge a complaint with your local data protection authority.</p>
-<p>Because we do not maintain a user database, almost all personal data lives on your device — uninstalling the app removes it. For transcripts and photos sent to OpenAI for the AI features, the lawful basis is the performance of your request; deletion of those records is governed by OpenAI's policies linked above.</p>
+<h2>8. Your rights under GDPR</h2>
+<p>If you are in the European Economic Area, UK, or Switzerland, you have the rights of access, rectification, erasure, restriction, portability, and objection. Because we do not maintain a user database, almost all personal data lives on your device — uninstalling the app removes it.</p>
 
-<h2>9. Your rights under CCPA/CPRA (California users)</h2>
-<p>You have the right to know what personal information is collected, to request deletion, to opt out of the sale or sharing of personal information, and to non-discrimination for exercising your rights.</p>
-<p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong> No personal information has been sold in the preceding 12 months.</p>
+<h2>9. Your rights under CCPA/CPRA</h2>
+<p><strong>We do not sell or share personal information for cross-context behavioral advertising.</strong></p>
 
 <h2>10. Data retention</h2>
-<p>On-device data exists only as long as the app is installed and is removed when you delete the app. Data sent to OpenAI for the AI features is retained according to OpenAI's policies (see link above). The Cloudflare Worker we operate does not store the contents of OpenAI requests. Product analytics events written to the Cloudflare D1 database (see Section 5) are retained for up to 12 months, after which they are deleted.</p>
+<p>On-device data exists only as long as the app is installed. Product analytics events in Cloudflare D1 are retained for up to 12 months, after which they are deleted.</p>
 
 <h2>11. International transfers</h2>
 <p>Apple, RevenueCat, Cloudflare, and OpenAI may process data in the United States and other countries. See their respective privacy policies for details.</p>
 
 <h2>12. Changes to this policy</h2>
-<p>We may update this policy. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance.</p>
+<p>We may update this policy. Material changes will be reflected by updating the "Last updated" date at the top of this page.</p>
 
 <h2>13. Contact</h2>
 <p>For any privacy questions or to exercise your rights, contact:<br>
